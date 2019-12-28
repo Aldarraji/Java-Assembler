@@ -1,0 +1,18 @@
+
+# is this a comment?
+
+#WILL THIS WORK
+ADD 2
+SUB 99
+MLT 33
+DIV 4
+ILOAD 55
+LOAD 33
+STOR 44
+READ 2
+WRITE 23
+BR 2
+BZ 5
+BN 6
+DUMP 5
+HALT 1

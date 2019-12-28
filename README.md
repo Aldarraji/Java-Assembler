@@ -39,7 +39,7 @@ The VPC has a grand total of three registers:
 The virtual processor in our VPC will support the following assembly language
 instructions:
 
-#########################################################################
+/#########################################################################
 # HALT  = 0;  stop program
 # ADD   = 1;  GPREG is updated with itself + MEMORY[arg]
 # SUB   = 2;  GPREG is updated with itself - MEMORY[arg]
@@ -54,7 +54,7 @@ instructions:
 # BZ    = 11; branch if GPREG is zero
 # BN    = 12; branch if GPREG is nonzero
 # DUMP  = 13; dump memory/register contents
-#########################################################################
+/#########################################################################
 
 VPC assembly language instruction format consists of the name of the
 instruction and a single argument.  The HALT and DUMP instructions will

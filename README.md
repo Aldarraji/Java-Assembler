@@ -41,19 +41,19 @@ instructions:
 
 #########################################################################  
 \# HALT  = 0;  stop program  
-# ADD   = 1;  GPREG is updated with itself + MEMORY[arg]  
-# SUB   = 2;  GPREG is updated with itself - MEMORY[arg]  
-# MLT   = 3;  GPREG is updated with itself * MEMORY[arg]  
-# DIV   = 4;  GPREG is updated with itself / MEMORY[arg]  
-# ILOAD = 5;  arg to GPREG  
-# LOAD  = 6;  MEMORY[arg] to GPREG  
-# STOR  = 7;  GPREG to MEMORY[arg]  
-# READ  = 8;  keyboard to MEMORY[arg]  
-# WRITE = 9;  MEMORY[arg] to screen  
-# BR    = 10; unconditional branch to instruction at MEMORY[arg]  
-# BZ    = 11; branch if GPREG is zero  
-# BN    = 12; branch if GPREG is nonzero  
-# DUMP  = 13; dump memory/register contents  
+\# ADD   = 1;  GPREG is updated with itself + MEMORY[arg]  
+\# SUB   = 2;  GPREG is updated with itself - MEMORY[arg]  
+\# MLT   = 3;  GPREG is updated with itself * MEMORY[arg]  
+\# DIV   = 4;  GPREG is updated with itself / MEMORY[arg]  
+\# ILOAD = 5;  arg to GPREG  
+\# LOAD  = 6;  MEMORY[arg] to GPREG  
+\# STOR  = 7;  GPREG to MEMORY[arg]  
+\# READ  = 8;  keyboard to MEMORY[arg]  
+\# WRITE = 9;  MEMORY[arg] to screen  
+\# BR    = 10; unconditional branch to instruction at MEMORY[arg]  
+\# BZ    = 11; branch if GPREG is zero  
+\# BN    = 12; branch if GPREG is nonzero  
+\# DUMP  = 13; dump memory/register contents  
 #########################################################################  
 
 
@@ -62,80 +62,80 @@ instruction and a single argument.  The HALT and DUMP instructions will
 not do anything with the argument, but one should be provided anyway to
 simplify the Assembler and VPCrte programs.  I recommend using a '99'
 as the argument to make them stand out a little when you look at a
-memory dump.
+memory dump.  
 
-An example of a VPC assembly instruction to perform addition:
+An example of a VPC assembly instruction to perform addition:  
 
-ADD 5
+ADD 5  
 
 The above instruction will add the value in memory at address 5 to the value
-in stored in GPREG.  The results will be stored in GPREG.
+in stored in GPREG.  The results will be stored in GPREG.  
 
 Here is a sample program execution which will show a VPC program being used
-to prompt the user for two values, add them together and display the sum.
+to prompt the user for two values, add them together and display the sum.  
 
 ================================================================================
-$ java VPCrte addTwoNumsInteractive.exe
-[90]? 5
-[91]? 9
-[92] -> 14
-================================================================================
+$ java VPCrte addTwoNumsInteractive.exe  
+[90]? 5  
+[91]? 9  
+[92] -> 14  
+================================================================================  
 
 The program prompted the user for two values which are stored in memory
 locations 90 and 91.  The program then computes the sum and stores the result
-in memory location 92.  Then the value in memory location 92 is displayed.
+in memory location 92.  Then the value in memory location 92 is displayed.  
 
-The source code for the program is 
-================================================================================
-$ cat addTwoNumsInteractive.asm
-#
-# VARIABLE MAP:
-#
-#  90:  first var
-#  91:  second var
-#  92:  sum
+The source code for the program is   
+================================================================================  
+$ cat addTwoNumsInteractive.asm  
+\#
+\# VARIABLE MAP:
+\#
+\#  90:  first var
+\#  91:  second var
+\#  92:  sum
 
-READ 90  # read 1st value to 90
-LOAD 90  # load into GPREG
-READ 91  # read 2nd value to 91
-ADD  91  # add value from 91 to value in GPREG
-STOR 92  # store sum (stored in GPREG) to 92
-#DUMP 99
-WRITE 92 # display sum
-HALT 99
-================================================================================
+READ 90  # read 1st value to 90  
+LOAD 90  # load into GPREG  
+READ 91  # read 2nd value to 91  
+ADD  91  # add value from 91 to value in GPREG  
+STOR 92  # store sum (stored in GPREG) to 92  
+#DUMP 99  
+WRITE 92 # display sum  
+HALT 99  
+================================================================================  
 
-Compile/assemble the source code as follows:
-================================================================================
-$ java Assemble addTwoNumsInteractive.asm > addTwoNumsInteractive.exe
-================================================================================
+Compile/assemble the source code as follows:  
+================================================================================  
+$ java Assemble addTwoNumsInteractive.asm > addTwoNumsInteractive.exe  
+================================================================================  
 
-Note that the assembler simply displays the executable code as output. 
-Redirecting the output to a file as shown above creates the executable format.
+Note that the assembler simply displays the executable code as output.  
+Redirecting the output to a file as shown above creates the executable format.  
 
-The assembler converts the string opcodes (ADD, SUB, etc) with the
-corresponding numeric integer code and appends the numeric operand.  It
-should ignore blank lines or anything that follows a '#' sign.
+The assembler converts the string opcodes (ADD, SUB, etc) with the  
+corresponding numeric integer code and appends the numeric operand.  It  
+should ignore blank lines or anything that follows a '#' sign.  
 
-The "executable" format is as follows:
-================================================================================
-$ cat addTwoNumsInteractive.exe
-0890
-0690
-0891
-0191
-0792
-0992
-0099
-================================================================================
+The "executable" format is as follows:  
+================================================================================  
+$ cat addTwoNumsInteractive.exe  
+0890  
+0690  
+0891  
+0191  
+0792  
+0992  
+0099  
+================================================================================  
 
-If the user forgets to supply a command line parameter (source file name),
-print an error and exit.
-
-================================================================================
-$ java Assemble
-usage:  java Assemble INPUTFILE
-================================================================================
+If the user forgets to supply a command line parameter (source file name),  
+print an error and exit.  
+  
+================================================================================  
+$ java Assemble  
+usage:  java Assemble INPUTFILE  
+================================================================================  
 
 To help you debug your VPCrte program (and also the programs that it will
 eventually execute), your RTE should support an instruction to dump the
@@ -145,86 +145,86 @@ what is going on with your program.  To help debug VPC assembly programs,
 the user of your RTE should be able to invoke "debug mode" which will provide
 information as your program is being loaded into memory, an initial memory
 dump (prior to your program beginning) and an instruction by instruction
-trace as the code executes.
+trace as the code executes.  
 
-================================================================================
-$ java VPCrte addTwoNumsInteractive.exe debug
-readToMemory: [00] = (0890)
-readToMemory: [01] = (0690)
-readToMemory: [02] = (0891)
-readToMemory: [03] = (0191)
-readToMemory: [04] = (0792)
-readToMemory: [05] = (0992)
-readToMemory: [06] = (0099)
-===================================================================
-PCREG = 0000
-IRREG = 0000
-GPREG = 0000
+================================================================================  
+$ java VPCrte addTwoNumsInteractive.exe debug  
+readToMemory: [00] = (0890)  
+readToMemory: [01] = (0690)  
+readToMemory: [02] = (0891)  
+readToMemory: [03] = (0191)  
+readToMemory: [04] = (0792)  
+readToMemory: [05] = (0992)  
+readToMemory: [06] = (0099)  
+===================================================================  
+PCREG = 0000  
+IRREG = 0000  
+GPREG = 0000  
+  
+MEMORY:     0     1     2     3     4     5     6     7     8     9  
+    ---------------------------------------------------------------  
+     0|  0890  0690  0891  0191  0792  0992  0099  0000  0000  0000  
+     1|  0000  0000  0000  0000  0000  0000  0000  0000  0000  0000  
+     2|  0000  0000  0000  0000  0000  0000  0000  0000  0000  0000  
+     3|  0000  0000  0000  0000  0000  0000  0000  0000  0000  0000  
+     4|  0000  0000  0000  0000  0000  0000  0000  0000  0000  0000  
+     5|  0000  0000  0000  0000  0000  0000  0000  0000  0000  0000  
+     6|  0000  0000  0000  0000  0000  0000  0000  0000  0000  0000  
+     7|  0000  0000  0000  0000  0000  0000  0000  0000  0000  0000  
+     8|  0000  0000  0000  0000  0000  0000  0000  0000  0000  0000  
+     9|  0000  0000  0000  0000  0000  0000  0000  0000  0000  0000  
+  
+===================================================================  
+runProg:  MEMORY[00] = 0890, opcode = 08, operand = 90, GPREG = 0000 (READ)  
+[90]? 3  
+runProg:  MEMORY[01] = 0690, opcode = 06, operand = 90, GPREG = 0000 (LOAD)  
+runProg:  MEMORY[02] = 0891, opcode = 08, operand = 91, GPREG = 0003 (READ)  
+[91]? 8  
+runProg:  MEMORY[03] = 0191, opcode = 01, operand = 91, GPREG = 0003 (ADD)  
+runProg:  MEMORY[04] = 0792, opcode = 07, operand = 92, GPREG = 0011 (STOR)  
+runProg:  MEMORY[05] = 0992, opcode = 09, operand = 92, GPREG = 0011 (WRITE)  
+[92] -> 11  
+runProg:  MEMORY[06] = 0099, opcode = 00, operand = 99, GPREG = 0011 (HALT)  
+================================================================================  
 
-MEMORY:     0     1     2     3     4     5     6     7     8     9
-    ---------------------------------------------------------------
-     0|  0890  0690  0891  0191  0792  0992  0099  0000  0000  0000
-     1|  0000  0000  0000  0000  0000  0000  0000  0000  0000  0000
-     2|  0000  0000  0000  0000  0000  0000  0000  0000  0000  0000
-     3|  0000  0000  0000  0000  0000  0000  0000  0000  0000  0000
-     4|  0000  0000  0000  0000  0000  0000  0000  0000  0000  0000
-     5|  0000  0000  0000  0000  0000  0000  0000  0000  0000  0000
-     6|  0000  0000  0000  0000  0000  0000  0000  0000  0000  0000
-     7|  0000  0000  0000  0000  0000  0000  0000  0000  0000  0000
-     8|  0000  0000  0000  0000  0000  0000  0000  0000  0000  0000
-     9|  0000  0000  0000  0000  0000  0000  0000  0000  0000  0000
+Note that the string "debug" was supplied as a command line parameter  
+to generate the additional debugging output.  
+  
+If additional debugging information is needed, the user can include  
+a DUMP instruction in their program as needed:  
+================================================================================  
+$ cat addTwoNumsInteractive.asm  
+\# <snip> (comments have been deleted here)  
+READ 90  \# read 1st value to 90  
+LOAD 90  \# load into GPREG  
+READ 91  \# read 2nd value to 91  
+ADD 91   \# add value from 91 to value in GPREG  
+STOR 92  \# store sum to 92  
+DUMP 99  \# Note:  call to DUMP has been uncommented!  
+WRITE 92 \# display sum  
+HALT 99  
+$ java VPCrte addTwoNumsInteractive.exe  
+[90]? 3  
+[91]? 5  
+===================================================================  
+PCREG = 0005  
+IRREG = 1399  
+GPREG = 0008  
 
-===================================================================
-runProg:  MEMORY[00] = 0890, opcode = 08, operand = 90, GPREG = 0000 (READ)
-[90]? 3
-runProg:  MEMORY[01] = 0690, opcode = 06, operand = 90, GPREG = 0000 (LOAD)
-runProg:  MEMORY[02] = 0891, opcode = 08, operand = 91, GPREG = 0003 (READ)
-[91]? 8
-runProg:  MEMORY[03] = 0191, opcode = 01, operand = 91, GPREG = 0003 (ADD)
-runProg:  MEMORY[04] = 0792, opcode = 07, operand = 92, GPREG = 0011 (STOR)
-runProg:  MEMORY[05] = 0992, opcode = 09, operand = 92, GPREG = 0011 (WRITE)
-[92] -> 11
-runProg:  MEMORY[06] = 0099, opcode = 00, operand = 99, GPREG = 0011 (HALT)
-================================================================================
-
-Note that the string "debug" was supplied as a command line parameter
-to generate the additional debugging output.
-
-If additional debugging information is needed, the user can include
-a DUMP instruction in their program as needed:
-================================================================================
-$ cat addTwoNumsInteractive.asm
-# <snip> (comments have been deleted here)
-READ 90  # read 1st value to 90
-LOAD 90  # load into GPREG
-READ 91  # read 2nd value to 91
-ADD 91   # add value from 91 to value in GPREG
-STOR 92  # store sum to 92
-DUMP 99  # Note:  call to DUMP has been uncommented!
-WRITE 92 # display sum
-HALT 99
-$ java VPCrte addTwoNumsInteractive.exe
-[90]? 3
-[91]? 5
-===================================================================
-PCREG = 0005
-IRREG = 1399
-GPREG = 0008
-
-MEMORY:     0     1     2     3     4     5     6     7     8     9
-    ---------------------------------------------------------------
-     0|  0890  0690  0891  0191  0792  1399  0992  0099  0000  0000
-     1|  0000  0000  0000  0000  0000  0000  0000  0000  0000  0000
-     2|  0000  0000  0000  0000  0000  0000  0000  0000  0000  0000
-     3|  0000  0000  0000  0000  0000  0000  0000  0000  0000  0000
-     4|  0000  0000  0000  0000  0000  0000  0000  0000  0000  0000
-     5|  0000  0000  0000  0000  0000  0000  0000  0000  0000  0000
-     6|  0000  0000  0000  0000  0000  0000  0000  0000  0000  0000
-     7|  0000  0000  0000  0000  0000  0000  0000  0000  0000  0000
-     8|  0000  0000  0000  0000  0000  0000  0000  0000  0000  0000
-     9|  0003  0005  0008  0000  0000  0000  0000  0000  0000  0000
-
-===================================================================
-[92] -> 8
-================================================================================
+MEMORY:     0     1     2     3     4     5     6     7     8     9  
+    ---------------------------------------------------------------  
+     0|  0890  0690  0891  0191  0792  1399  0992  0099  0000  0000  
+     1|  0000  0000  0000  0000  0000  0000  0000  0000  0000  0000  
+     2|  0000  0000  0000  0000  0000  0000  0000  0000  0000  0000  
+     3|  0000  0000  0000  0000  0000  0000  0000  0000  0000  0000  
+     4|  0000  0000  0000  0000  0000  0000  0000  0000  0000  0000  
+     5|  0000  0000  0000  0000  0000  0000  0000  0000  0000  0000  
+     6|  0000  0000  0000  0000  0000  0000  0000  0000  0000  0000  
+     7|  0000  0000  0000  0000  0000  0000  0000  0000  0000  0000  
+     8|  0000  0000  0000  0000  0000  0000  0000  0000  0000  0000  
+     9|  0003  0005  0008  0000  0000  0000  0000  0000  0000  0000  
+  
+===================================================================  
+[92] -> 8  
+================================================================================  
 \*

@@ -74,7 +74,7 @@ in stored in GPREG.  The results will be stored in GPREG.
 Here is a sample program execution which will show a VPC program being used
 to prompt the user for two values, add them together and display the sum.  
 
-================================================================================
+================================================================================  
 $ java VPCrte addTwoNumsInteractive.exe  
 [90]? 5  
 [91]? 9  

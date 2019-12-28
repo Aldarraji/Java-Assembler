@@ -1,5 +1,5 @@
 # Java-Assembler
-## Note: All the programss was devoloped in linux redhat therefore all the commands can only work in linux.
+
 ## Introduction
 This project is a combunation of 3 main files: 
 1.  Assemble.java
@@ -227,4 +227,5 @@ MEMORY:     0     1     2     3     4     5     6     7     8     9
 ===============================================================  
 [92] -> 8  
 ===========================================================================  
-\*
+
+## Note: All the programss was devoloped in linux redhat therefore all the commands can only work in linux.

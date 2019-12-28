@@ -74,19 +74,19 @@ in stored in GPREG.  The results will be stored in GPREG.
 Here is a sample program execution which will show a VPC program being used
 to prompt the user for two values, add them together and display the sum.  
 
-================================================================================  
+============================================================================  
 $ java VPCrte addTwoNumsInteractive.exe  
 [90]? 5  
 [91]? 9  
 [92] -> 14  
-================================================================================  
+============================================================================  
 
 The program prompted the user for two values which are stored in memory
 locations 90 and 91.  The program then computes the sum and stores the result
 in memory location 92.  Then the value in memory location 92 is displayed.  
 
 The source code for the program is   
-================================================================================  
+============================================================================  
 $ cat addTwoNumsInteractive.asm  
 \#
 \# VARIABLE MAP:
@@ -103,12 +103,12 @@ STOR 92  # store sum (stored in GPREG) to 92
 #DUMP 99  
 WRITE 92 # display sum  
 HALT 99  
-================================================================================  
+============================================================================  
 
 Compile/assemble the source code as follows:  
-================================================================================  
+============================================================================  
 $ java Assemble addTwoNumsInteractive.asm > addTwoNumsInteractive.exe  
-================================================================================  
+============================================================================  
 
 Note that the assembler simply displays the executable code as output.  
 Redirecting the output to a file as shown above creates the executable format.  
@@ -118,7 +118,7 @@ corresponding numeric integer code and appends the numeric operand.  It
 should ignore blank lines or anything that follows a '#' sign.  
 
 The "executable" format is as follows:  
-================================================================================  
+============================================================================  
 $ cat addTwoNumsInteractive.exe  
 0890  
 0690  
@@ -127,15 +127,15 @@ $ cat addTwoNumsInteractive.exe
 0792  
 0992  
 0099  
-================================================================================  
+============================================================================  
 
 If the user forgets to supply a command line parameter (source file name),  
 print an error and exit.  
   
-================================================================================  
+============================================================================  
 $ java Assemble  
 usage:  java Assemble INPUTFILE  
-================================================================================  
+============================================================================  
 
 To help you debug your VPCrte program (and also the programs that it will
 eventually execute), your RTE should support an instruction to dump the
@@ -147,7 +147,7 @@ information as your program is being loaded into memory, an initial memory
 dump (prior to your program beginning) and an instruction by instruction
 trace as the code executes.  
 
-================================================================================  
+============================================================================  
 $ java VPCrte addTwoNumsInteractive.exe debug  
 readToMemory: [00] = (0890)  
 readToMemory: [01] = (0690)  
@@ -156,7 +156,7 @@ readToMemory: [03] = (0191)
 readToMemory: [04] = (0792)  
 readToMemory: [05] = (0992)  
 readToMemory: [06] = (0099)  
-===================================================================  
+===============================================================  
 PCREG = 0000  
 IRREG = 0000  
 GPREG = 0000  
@@ -174,7 +174,7 @@ MEMORY:     0     1     2     3     4     5     6     7     8     9
      8|  0000  0000  0000  0000  0000  0000  0000  0000  0000  0000  
      9|  0000  0000  0000  0000  0000  0000  0000  0000  0000  0000  
   
-===================================================================  
+===============================================================  
 runProg:  MEMORY[00] = 0890, opcode = 08, operand = 90, GPREG = 0000 (READ)  
 [90]? 3  
 runProg:  MEMORY[01] = 0690, opcode = 06, operand = 90, GPREG = 0000 (LOAD)  
@@ -185,14 +185,14 @@ runProg:  MEMORY[04] = 0792, opcode = 07, operand = 92, GPREG = 0011 (STOR)
 runProg:  MEMORY[05] = 0992, opcode = 09, operand = 92, GPREG = 0011 (WRITE)  
 [92] -> 11  
 runProg:  MEMORY[06] = 0099, opcode = 00, operand = 99, GPREG = 0011 (HALT)  
-================================================================================  
+===========================================================================  
 
 Note that the string "debug" was supplied as a command line parameter  
 to generate the additional debugging output.  
   
 If additional debugging information is needed, the user can include  
 a DUMP instruction in their program as needed:  
-================================================================================  
+============================================================================  
 $ cat addTwoNumsInteractive.asm  
 \# <snip> (comments have been deleted here)  
 READ 90  \# read 1st value to 90  
@@ -206,7 +206,7 @@ HALT 99
 $ java VPCrte addTwoNumsInteractive.exe  
 [90]? 3  
 [91]? 5  
-===================================================================  
+===============================================================  
 PCREG = 0005  
 IRREG = 1399  
 GPREG = 0008  
@@ -224,7 +224,7 @@ MEMORY:     0     1     2     3     4     5     6     7     8     9
      8|  0000  0000  0000  0000  0000  0000  0000  0000  0000  0000  
      9|  0003  0005  0008  0000  0000  0000  0000  0000  0000  0000  
   
-===================================================================  
+===============================================================  
 [92] -> 8  
-================================================================================  
+===========================================================================  
 \*

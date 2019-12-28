@@ -40,8 +40,8 @@ The virtual processor in our VPC will support the following assembly language
 instructions:
 
 #########################################################################
-/# HALT  = 0;  stop program/n
-/# ADD   = 1;  GPREG is updated with itself + MEMORY[arg]/n
+/# HALT  = 0;  stop program 
+/# ADD   = 1;  GPREG is updated with itself + MEMORY[arg] 
 /# SUB   = 2;  GPREG is updated with itself - MEMORY[arg]
 /# MLT   = 3;  GPREG is updated with itself * MEMORY[arg]
 /# DIV   = 4;  GPREG is updated with itself / MEMORY[arg]

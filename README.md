@@ -39,22 +39,22 @@ The VPC has a grand total of three registers:
 The virtual processor in our VPC will support the following assembly language
 instructions:
 
-/#########################################################################
-# HALT  = 0;  stop program
-# ADD   = 1;  GPREG is updated with itself + MEMORY[arg]
-# SUB   = 2;  GPREG is updated with itself - MEMORY[arg]
-# MLT   = 3;  GPREG is updated with itself * MEMORY[arg]
-# DIV   = 4;  GPREG is updated with itself / MEMORY[arg]
-# ILOAD = 5;  arg to GPREG
-# LOAD  = 6;  MEMORY[arg] to GPREG
-# STOR  = 7;  GPREG to MEMORY[arg]
-# READ  = 8;  keyboard to MEMORY[arg]
-# WRITE = 9;  MEMORY[arg] to screen
-# BR    = 10; unconditional branch to instruction at MEMORY[arg]
-# BZ    = 11; branch if GPREG is zero
-# BN    = 12; branch if GPREG is nonzero
-# DUMP  = 13; dump memory/register contents
-/#########################################################################
+\#########################################################################
+\# HALT  = 0;  stop program
+\# ADD   = 1;  GPREG is updated with itself + MEMORY[arg]
+\# SUB   = 2;  GPREG is updated with itself - MEMORY[arg]
+\# MLT   = 3;  GPREG is updated with itself * MEMORY[arg]
+\# DIV   = 4;  GPREG is updated with itself / MEMORY[arg]
+\# ILOAD = 5;  arg to GPREG
+\# LOAD  = 6;  MEMORY[arg] to GPREG
+\# STOR  = 7;  GPREG to MEMORY[arg]
+\# READ  = 8;  keyboard to MEMORY[arg]
+\# WRITE = 9;  MEMORY[arg] to screen
+\# BR    = 10; unconditional branch to instruction at MEMORY[arg]
+\# BZ    = 11; branch if GPREG is zero
+\# BN    = 12; branch if GPREG is nonzero
+\# DUMP  = 13; dump memory/register contents
+\#########################################################################
 
 VPC assembly language instruction format consists of the name of the
 instruction and a single argument.  The HALT and DUMP instructions will

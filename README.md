@@ -1,5 +1,5 @@
 # Java-Assembler
-\*literal asterisks\*
+
 ## Introduction
 This project is a combunation of 3 main files: 
 1.  Assemble.java
@@ -13,7 +13,7 @@ This project is a combunation of 3 main files:
 ### averageNums.asm is a program written in VPC assembly language which will allow the user to enter an unknown number of integers (until  the user enters a zero) and then calculates and displays the average of the numbers.
 
 ## Notes and screenshots
-Our Virtual PC computer memory consists of 100 ints, addressed 00-99.
+\*Our Virtual PC computer memory consists of 100 ints, addressed 00-99.
 
 The computer memory is used to store both the executable program code and
 also any variables which are needed by the program.  The computer memory
@@ -227,3 +227,4 @@ MEMORY:     0     1     2     3     4     5     6     7     8     9
 ===================================================================
 [92] -> 8
 ================================================================================
+\*

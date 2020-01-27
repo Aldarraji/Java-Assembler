@@ -6,7 +6,7 @@ This project is a combunation of 3 main files:
 2.  VPCrte.java
 3.  averageNums.asm
 
-### Each file does:
+### Each file does: 
 ### The VPCrte. java is a single tasking computer which will compile/assemble and execute a single program.  Virtual memory, multiple processing and task switching will not be supported.
 
 ### Assemble.java which will "assemble" a source code program written in VPC assembly language (detailed below) and convert it to an executable format which can be executed by a second program (VPCrte.java) which provides a run time environment for the programs.

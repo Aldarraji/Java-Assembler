@@ -11,7 +11,7 @@ This project is a combunation of 3 main files:
 
 ### Assemble.java which will "assemble" a source code program written in VPC assembly language (detailed below) and convert it to an executable format which can be executed by a second program (VPCrte.java) which provides a run time environment for the programs.
 
-### averageNums.asm is a program written in VPC assembly language which will allow the user to enter an unknown number of integers (until  the user enters a zero) and then calculates and displays the average of the numbers.
+### averageNums.asm is a program written in VPC assembly language which will allow the user to enter an unknown number of integers (until  the user enters a zero) and then calculates and displays the average of the numbers
 
 ## Notes and screenshots
 \*Our Virtual PC computer memory consists of 100 ints, addressed 00-99.
